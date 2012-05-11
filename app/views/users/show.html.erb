@@ -1,0 +1,5 @@
+<p id="notice"><%= notice %></p>
+
+<%= nested_messages  @user.subtree.scoped.arrange(:order => :name)%>
+
+<%= link_to 'Back', users_path %>

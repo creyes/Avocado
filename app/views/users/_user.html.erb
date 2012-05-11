@@ -1,0 +1,11 @@
+  <div class="message">
+    <div class="created_at"><%= user.created_at.strftime("%B %d, %Y") %></div>
+    <div class="assign"><%= link_to "Cambio Jefe", edit_user_path(user) %></div> 
+    <div class="content">
+      <%= link_to user.name,  user%>
+    </div>
+    <div class="actions">
+      <%= link_to "Add Children", new_user_path(:parent_id => user) %> |
+      <%= link_to "Destroy", user, :confirm => "Are you sure?", :method => :delete %>
+    </div>
+  </div>

@@ -1,0 +1,30 @@
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% if @user.new_record? %>
+    <%= f.hidden_field :parent_id %><br /> 
+  <% else %>  
+    <div class="field">
+      <%= f.label :parent_id%><br />
+      <%= f.select :parent_id, User.all.collect{ |c| [c.name, c.id] }, {:include_blank => "-- Selecciona tu Padre --"} %>
+  	</div>
+  <% end %>  
+  
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

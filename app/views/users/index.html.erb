@@ -1,0 +1,5 @@
+<h1>Listing users</h1>
+
+<%= nested_messages  @users.scoped.arrange(:order => :name)%>
+<br />
+<%= link_to 'New User', new_user_path %>
